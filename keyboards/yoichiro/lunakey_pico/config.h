@@ -18,7 +18,7 @@
 #define RGBLIGHT_LED_MAP { 0, 1, 2, 3, 4, 5, \
                            11, 10, 9, 8, 7, 6 }
 
-                           /* Audio support */
+/* Audio support */
 #ifdef AUDIO_ENABLE
   #define AUDIO_PIN GP8
   #define AUDIO_PWM_DRIVER PWMD4
@@ -26,6 +26,10 @@
   #define AUDIO_INIT_DELAY
   #define STARTUP_SONG SONG(M__NOTE(_C7, 30), M__NOTE(_C6, 30))
 #endif
+
+// work around for can't input shifted key at remote desktop
+// https://github.com/qmk/qmk_firmware/issues/13708
+#define TAP_CODE_DELAY 10
 
 /*
  * Feature disable options
