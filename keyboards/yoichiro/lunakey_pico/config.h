@@ -18,6 +18,15 @@
 #define RGBLIGHT_LED_MAP { 0, 1, 2, 3, 4, 5, \
                            11, 10, 9, 8, 7, 6 }
 
+                           /* Audio support */
+#ifdef AUDIO_ENABLE
+  #define AUDIO_PIN GP8
+  #define AUDIO_PWM_DRIVER PWMD4
+  #define AUDIO_PWM_CHANNEL RP2040_PWM_CHANNEL_A
+  #define AUDIO_INIT_DELAY
+  #define STARTUP_SONG SONG(M__NOTE(_C7, 30), M__NOTE(_C6, 30))
+#endif
+
 /*
  * Feature disable options
  *  These options are also useful to firmware size reduction.
