@@ -2,3 +2,4 @@ WS2812_DRIVER = vendor
 SERIAL_DRIVER = vendor
 AUDIO_ENABLE = yes
 AUDIO_DRIVER = pwm_hardware
+KEY_OVERRIDE_ENABLE = yes
