@@ -40,5 +40,19 @@
     },
 
     "terminal.integrated.cursorStyle": "line",
-    "terminal.integrated.defaultProfile.windows": "QMK_MSYS"
+    "terminal.integrated.defaultProfile.windows": "QMK_MSYS",
+    "json.schemas": [
+        {
+            "fileMatch": [
+                "/keyboards/**/**/info.json"
+            ],
+            "url": "/data/schemas/keyboard.jsonschema"
+        },
+        {
+            "fileMatch": [
+                "/keyboards/**/**/info.json"
+            ],
+            "url": "/data/schemas/definitions.jsonschema"
+        }
+    ]
 }
