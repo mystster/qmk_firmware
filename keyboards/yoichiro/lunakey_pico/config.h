@@ -31,6 +31,8 @@
 // https://github.com/qmk/qmk_firmware/issues/13708
 #define TAP_CODE_DELAY 10
 
+#define TAPPING_TOGGLE 2
+
 /*
  * Feature disable options
  *  These options are also useful to firmware size reduction.

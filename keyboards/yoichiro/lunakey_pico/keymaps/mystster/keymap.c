@@ -12,10 +12,10 @@ enum layer_number {
   _ADJUST,
 };
 
-#define LOWER MO(_LOWER)
+#define LOWER TT(_LOWER)
 #define RAISE MO(_RAISE)
 
-#define MT_TAB LALT_T(KC_TAB)
+#define MT_TAB LSFT_T(KC_TAB)
 #define MT_ENT LCTL_T(KC_ENT)
 #define MT_SPC RCTL_T(KC_SPC)
 #define MT_MHEN LSFT_T(JP_MHEN)
@@ -28,7 +28,7 @@ const key_override_t bsls_unds_override =
 const key_override_t scln_coln_override =
     ko_make_basic(MOD_MASK_SHIFT, JP_SCLN, JP_COLN);
 const key_override_t bspc_del_override =
-    ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, JP_EQL);
+    ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
 const key_override_t kcquot_jpquot_override = ko_make_with_layers_and_negmods(
     0, KC_QUOT, JP_QUOT, ~0, (uint8_t)MOD_MASK_SHIFT);
 
@@ -44,19 +44,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //+--------+--------+--------+--------+--------+--------+                 +--------+--------+--------+--------+--------+--------+
    MT_TAB,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                      KC_H,    KC_J,    KC_K,    KC_L,    JP_SCLN,  KC_QUOT,
 //+--------+--------+--------+--------+--------+--------+                 +--------+--------+--------+--------+--------+--------+
-   KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                      KC_N,    KC_M,    JP_COMM, JP_DOT,  JP_SLSH, JP_BSLS ,
+   KC_LALT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                      KC_N,    KC_M,    JP_COMM, JP_DOT,  JP_SLSH, JP_BSLS ,
 //+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
-                              KC_LGUI, MT_MHEN, LOWER,   MT_ENT,  MT_SPC,  RAISE,   MT_HENK, KC_RALT
+                              KC_LGUI, MT_MHEN,  MT_ENT, LOWER,   RAISE,   MT_SPC,  MT_HENK, KC_RALT
 //+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
   ),
-
   [_LOWER] = LAYOUT_split_3x6_4(
 //+--------+--------+--------+--------+--------+--------+                 +--------+--------+-  -------+--------+--------+--------+
-   JP_TILD, JP_EXLM, JP_AT,   JP_HASH, JP_DLR,  JP_PERC,                   JP_CIRC, JP_AMPR, JP_ASTR, JP_LPRN, JP_RPRN, KC_BSPC,
+   JP_TILD, JP_EXLM, JP_AT,   JP_HASH, JP_DLR,  JP_PERC,                   JP_CIRC, JP_AMPR, JP_LPRN, JP_RPRN, JP_ASTR, KC_BSPC,
 //+--------+--------+--------+--------+--------+--------+                 +--------+--------+--------+--------+--------+--------+
-   LALT_T(KC_LSFT), KC_1,    KC_2,    KC_3,    KC_4,    KC_5,              KC_6,    KC_7,    KC_8,    KC_9,    KC_0,   RALT_T(KC_RSFT),
+   MT_TAB,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                      KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    RALT_T(KC_RSFT),
 //+--------+--------+--------+--------+--------+--------+                 +--------+--------+--------+--------+--------+--------+
-   _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______,
+   _______, JP_MINS, JP_PLUS, JP_EQL,  JP_ASTR, JP_SLSH,                   _______, _______, _______, _______, JP_PIPE,  JP_GRV,
 //+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
                               _______, _______, _______, _______, _______, _______,  _______, _______
 //+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
@@ -64,11 +63,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_RAISE] = LAYOUT_split_3x6_4(
 //+--------+--------+--------+--------+--------+--------+                 +--------+--------+--------+--------+--------+--------+
-   JP_TILD, JP_EXLM, JP_AT,   JP_HASH, JP_DLR,  JP_PERC,                   JP_CIRC, JP_AMPR, JP_ASTR, JP_LPRN, JP_RPRN, KC_BSPC,
+   JP_TILD, JP_EXLM, JP_AT,   JP_HASH, JP_DLR,  JP_PERC,                   JP_CIRC, JP_AMPR, JP_LPRN, JP_RPRN, JP_ASTR, KC_BSPC,
 //+--------+--------+--------+--------+--------+--------+                 +--------+--------+--------+--------+--------+--------+
-   _______, JP_MINS, JP_PLUS, JP_EQL, JP_LCBR, JP_RCBR,                   KC_LEFT, KC_UP,   KC_DOWN, KC_RGHT, JP_PIPE,  JP_GRV,
+   _______, JP_MINS, JP_PLUS, JP_EQL,  JP_LCBR, JP_RCBR,                  KC_LEFT, KC_UP,   KC_DOWN, KC_RGHT, JP_PIPE,  JP_GRV,
 //+--------+--------+--------+--------+--------+--------+                 +--------+--------+--------+--------+--------+--------+
-   _______, _______, _______, _______, JP_LBRC, JP_RBRC,                   KC_PGUP, KC_HOME, KC_END,  KC_PGDN, _______, _______,
+   _______, JP_GRV,  JP_PIPE,  _______,JP_LBRC, JP_RBRC,                  KC_PGUP, KC_HOME, KC_END,  KC_PGDN, _______, _______,
 //+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
                               _______, _______, _______, _______, _______, _______,  _______, _______
 //+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
