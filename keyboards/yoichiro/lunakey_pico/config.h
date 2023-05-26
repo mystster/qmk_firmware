@@ -33,6 +33,8 @@
 
 #define TAPPING_TOGGLE 2
 
+#define AUTO_SHIFT_TIMEOUT 170
+#define NO_AUTO_SHIFT_SPECIAL
 /*
  * Feature disable options
  *  These options are also useful to firmware size reduction.
