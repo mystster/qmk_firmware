@@ -54,5 +54,6 @@
             ],
             "url": "/data/schemas/definitions.jsonschema"
         }
-    ]
+    ],
+    "cmake.configureOnOpen": false
 }
