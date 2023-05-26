@@ -114,4 +114,43 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_set_layer_state(3, layer_state_cmp(updatedState, _ADJUST));
     return updatedState;
 }
+
+float lower_audio[][2] = SONG(Q__NOTE(_A4));
+float raise_audio[][2] = SONG(Q__NOTE(_D5));
+float adjust_audio[][2] = SONG(Q__NOTE(_A5));
+float HENK_audio[][2] = SONG(CAPS_LOCK_ON_SOUND);
+float MHEN_audio[][2] = SONG(SCROLL_LOCK_OFF_SOUND);
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch(keycode) {
+    case LOWER:
+        if(record->event.pressed) {
+#ifdef AUDIO_ENABLE
+            PLAY_SONG(lower_audio);
+#endif
+        }
+        break;
+    case RAISE:
+        if(record->event.pressed) {
+#ifdef AUDIO_ENABLE
+            PLAY_SONG(raise_audio);
+#endif
+        }
+        break;
+    case MT_HENK:
+        if(record->event.pressed) {
+#ifdef AUDIO_ENABLE
+            PLAY_SONG(HENK_audio);
+#endif
+        }
+        break;
+    case MT_MHEN:
+        if(record->event.pressed) {
+#ifdef AUDIO_ENABLE
+            PLAY_SONG(MHEN_audio);
+#endif
+        }
+        break;
+    }
+    return true;
 }
