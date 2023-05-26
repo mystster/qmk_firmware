@@ -4,6 +4,7 @@
 #include QMK_KEYBOARD_H
 #include "process_key_override.h"
 #include <quantum\keymap_extras\keymap_japanese.h>
+#include <quantum\rgblight\rgblight.h>
 
 enum layer_number {
   _QWERTY = 0,
@@ -86,6 +87,31 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   )
 };
 
+const rgblight_segment_t PROGMEM qwerty_layer[] =
+    RGBLIGHT_LAYER_SEGMENTS({0, 12, HSV_OFF});
+const rgblight_segment_t PROGMEM lower_layer[] =
+    RGBLIGHT_LAYER_SEGMENTS({0, 12, HSV_BLUE});
+const rgblight_segment_t PROGMEM raise_layer[] =
+    RGBLIGHT_LAYER_SEGMENTS({0, 12, HSV_YELLOW});
+const rgblight_segment_t PROGMEM adjust_layer[] =
+    RGBLIGHT_LAYER_SEGMENTS({0, 12, HSV_RED});
+
+const rgblight_segment_t *const PROGMEM my_rgb_layers[] =
+    RGBLIGHT_LAYERS_LIST(qwerty_layer, lower_layer, raise_layer, adjust_layer);
+
+void keyboard_post_init_user(void) {
+    rgblight_layers = my_rgb_layers;
+    rgblight_enable();
+    rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
+}
+
 layer_state_t layer_state_set_user(layer_state_t state) {
-  return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
+    layer_state_t updatedState =
+        update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
+    rgblight_set_layer_state(0, layer_state_cmp(updatedState, _QWERTY));
+    rgblight_set_layer_state(1, layer_state_cmp(updatedState, _LOWER));
+    rgblight_set_layer_state(2, layer_state_cmp(updatedState, _RAISE));
+    rgblight_set_layer_state(3, layer_state_cmp(updatedState, _ADJUST));
+    return updatedState;
+}
 }

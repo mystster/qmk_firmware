@@ -12,7 +12,7 @@
 #define SERIAL_USART_RX_PIN GP1
 
 //#define SERIAL_DEBUG
-
+#define RGBLIGHT_LAYERS
 #define WS2812_PIO_USE_PIO1
 
 #define RGBLIGHT_LED_MAP { 0, 1, 2, 3, 4, 5, \
