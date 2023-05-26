@@ -7,10 +7,10 @@
 #include <quantum\rgblight\rgblight.h>
 
 enum layer_number {
-  _QWERTY = 0,
-  _LOWER,
-  _RAISE,
-  _ADJUST,
+    _QWERTY = 0,
+    _LOWER,
+    _RAISE,
+    _ADJUST,
 };
 
 #define LOWER TT(_LOWER)
