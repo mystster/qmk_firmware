@@ -5,6 +5,7 @@
 #include "process_key_override.h"
 #include <quantum\keymap_extras\keymap_japanese.h>
 #include <quantum\rgblight\rgblight.h>
+#include <quantum\logging\debug.h>
 
 enum layer_number {
     _QWERTY = 0,
@@ -47,7 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //+--------+--------+--------+--------+--------+--------+                 +--------+--------+--------+--------+--------+--------+
    KC_LALT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                      KC_N,    KC_M,    JP_COMM, JP_DOT,  JP_SLSH, JP_BSLS ,
 //+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
-                              KC_LGUI, MT_MHEN,  MT_ENT, LOWER,   RAISE,   MT_SPC,  MT_HENK, KC_RALT
+                              KC_LGUI, MT_MHEN,  MT_ENT, LOWER,   RAISE,   MT_SPC,  MT_HENK, KC_RCTL
 //+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
   ),
   [_LOWER] = LAYOUT_split_3x6_4(
@@ -103,6 +104,15 @@ void keyboard_post_init_user(void) {
     rgblight_layers = my_rgb_layers;
     rgblight_enable();
     rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
+
+    autoshift_disable();
+}
+
+void keyboard_post_init_kb(void) {
+    debug_enable = true;
+    debug_matrix = true;
+    debug_keyboard = true;
+    keyboard_post_init_user();
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
