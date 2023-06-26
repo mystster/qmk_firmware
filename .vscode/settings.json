@@ -55,5 +55,6 @@
             "url": "/data/schemas/definitions.jsonschema"
         }
     ],
-    "cmake.configureOnOpen": false
+    "cmake.configureOnOpen": false,
+    "cmake.sourceDirectory": "C:/Users/mysts/qmk_firmware/lib/pico-sdk/src/common/pico_binary_info"
 }
