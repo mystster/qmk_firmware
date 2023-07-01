@@ -131,6 +131,8 @@ float adjust_audio[][2] = SONG(Q__NOTE(_A5));
 float HENK_audio[][2] = SONG(CAPS_LOCK_ON_SOUND);
 float MHEN_audio[][2] = SONG(SCROLL_LOCK_OFF_SOUND);
 
+bool isCtrlPressed = false;
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch(keycode) {
     case LOWER:
@@ -159,6 +161,32 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #ifdef AUDIO_ENABLE
             PLAY_SONG(MHEN_audio);
 #endif
+        }
+        break;
+    case MOD_LCTL:
+    case KC_LCTL:
+        if (record->event.pressed)
+        {
+            dprintf("ctrl pressed");
+            isCtrlPressed = true;
+        }else{
+            dprintf("ctrl released");
+            isCtrlPressed = false;
+        }
+        break;
+    case KC_SPC:
+        dprintf("Space press or release");
+        if(isCtrlPressed) {
+            if(record->event.pressed) {
+                unregister_code16(KC_LCTL);
+                wait_ms(10);
+                register_code16(KC_LCTL);
+                wait_ms(20);
+                register_code16(KC_SPC);
+            } else {
+                unregister_code16(KC_SPC);
+            }
+            return false;
         }
         break;
     }
