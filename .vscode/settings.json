@@ -56,8 +56,11 @@
         }
     ],
     "cmake.configureOnOpen": false,
-    "cmake.sourceDirectory": "C:/Users/mysts/qmk_firmware/lib/pico-sdk/src/common/pico_binary_info"
+    "cmake.sourceDirectory": "C:/Users/mysts/qmk_firmware/lib/pico-sdk/src/common/pico_binary_info",
     "clangd.arguments": [
         "--header-insertion=never"
-    ]
+    ],
+    "C_Cpp.intelliSenseEngine": "disabled",
+    "C_Cpp.autocomplete": "disabled",
+    "C_Cpp.errorSquiggles": "disabled"
 }

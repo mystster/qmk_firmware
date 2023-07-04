@@ -4,6 +4,12 @@
 #pragma once
 
 #define USB_VBUS_PIN GP24
+#define SPLIT_HAND_PIN GP22
+// #define SPLIT_USB_DETECT
+// #define SPLIT_USB_TIMEOUT 5000
+// #define SPLIT_USB_TIMEOUT_POLL 25
+
+#define EE_HANDS
 
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_LED GP25
@@ -18,6 +24,9 @@
 
 #define RGBLIGHT_LAYERS
 #define WS2812_PIO_USE_PIO1
+
+// #define SERIAL_PIO_USE_PIO1
+#define SERIAL_USART_DRIVER SIOD0
 
 #define RGBLIGHT_LED_MAP { 0, 1, 2, 3, 4, 5, \
                            11, 10, 9, 8, 7, 6 }
