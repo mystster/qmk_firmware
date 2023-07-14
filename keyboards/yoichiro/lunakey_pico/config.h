@@ -18,15 +18,13 @@
 #define SERIAL_USART_FULL_DUPLEX
 #define SERIAL_USART_TX_PIN GP0
 #define SERIAL_USART_RX_PIN GP1
-// #define SERIAL_USART_TIMEOUT 100
-// #define SELECT_SOFT_SERIAL_SPEED 5
+
 #define SERIAL_DEBUG
 
 #define RGBLIGHT_LAYERS
 #define WS2812_PIO_USE_PIO1
 
-// #define SERIAL_PIO_USE_PIO1
-#define SERIAL_USART_DRIVER SIOD0
+#define SERIAL_PIO_USE_PIO1
 
 #define RGBLIGHT_LED_MAP { 0, 1, 2, 3, 4, 5, \
                            11, 10, 9, 8, 7, 6 }
