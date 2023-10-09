@@ -1,7 +1,8 @@
 // Copyright 2022 Yoichiro Tanaka (@yoichiro)
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#include QMK_KEYBOARD_H
+// #include QMK_KEYBOARD_H
+#include ".build/obj_yoichiro_lunakey_pico/src/default_keyboard.h"
 #include "process_key_override.h"
 #include <quantum\keymap_extras\keymap_japanese.h>
 #include <quantum\rgblight\rgblight.h>
@@ -18,8 +19,8 @@ enum layer_number {
 #define RAISE MO(_RAISE)
 
 #define MT_TAB LSFT_T(KC_TAB)
-#define MT_ENT LCTL_T(KC_ENT)
-#define MT_SPC RCTL_T(KC_SPC)
+#define MT_ENT RCTL_T(KC_ENT)
+#define MT_SPC LCTL_T(KC_SPC)
 #define MT_MHEN LSFT_T(JP_MHEN)
 #define MT_HENK LSFT_T(JP_HENK)
 
@@ -48,7 +49,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //+--------+--------+--------+--------+--------+--------+                 +--------+--------+--------+--------+--------+--------+
    KC_LALT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                      KC_N,    KC_M,    JP_COMM, JP_DOT,  JP_SLSH, JP_BSLS ,
 //+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
-                              KC_LGUI, MT_MHEN,  MT_ENT, LOWER,   RAISE,   MT_SPC,  MT_HENK, KC_RCTL
+                              KC_LGUI, MT_MHEN,  MT_SPC, LOWER,   RAISE,   MT_ENT,  MT_HENK, KC_RALT
 //+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
   ),
   [_LOWER] = LAYOUT_split_3x6_4(
@@ -67,7 +68,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //+--------+--------+--------+--------+--------+--------+                 +--------+--------+--------+--------+--------+--------+
    JP_TILD, JP_EXLM, JP_AT,   JP_HASH, JP_DLR,  JP_PERC,                   JP_CIRC, JP_AMPR, JP_LPRN, JP_RPRN, JP_ASTR, KC_BSPC,
 //+--------+--------+--------+--------+--------+--------+                 +--------+--------+--------+--------+--------+--------+
-   _______, JP_MINS, JP_PLUS, JP_EQL,  JP_LCBR, JP_RCBR,                  KC_LEFT, KC_UP,   KC_DOWN, KC_RGHT, JP_PIPE,  JP_GRV,
+   _______, JP_MINS, JP_PLUS, JP_EQL,  JP_LCBR, JP_RCBR,                  KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, JP_PIPE,  JP_GRV,
 //+--------+--------+--------+--------+--------+--------+                 +--------+--------+--------+--------+--------+--------+
    _______, JP_GRV,  JP_PIPE,  _______,JP_LBRC, JP_RBRC,                  KC_PGUP, KC_HOME, KC_END,  KC_PGDN, _______, _______,
 //+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
