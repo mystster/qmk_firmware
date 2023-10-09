@@ -26,9 +26,6 @@
 
 #define SERIAL_PIO_USE_PIO1
 
-#define RGBLIGHT_LED_MAP { 0, 1, 2, 3, 4, 5, \
-                           11, 10, 9, 8, 7, 6 }
-
 /* Audio support */
 #ifdef AUDIO_ENABLE
   #define AUDIO_PIN GP8
