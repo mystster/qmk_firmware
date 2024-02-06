@@ -34,7 +34,7 @@ enum layer_number {
 };
 
 enum custom_keycode {
-    WAC_V = SAFE_RANGE,
+    WSC_V = SAFE_RANGE,
     WSC_R,
     WSC_T
 };
@@ -111,7 +111,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         //+--------+--------+--------+--------+--------+--------+                 +--------+--------+--------+--------+--------+--------+
         QK_GESC, AS_DOWN, AS_UP, AS_RPT, AS_ON, AS_OFF, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12,
         //+--------+--------+--------+--------+--------+--------+                 +--------+--------+--------+--------+--------+--------+
-        QK_BOOT, RGB_TOG, AU_TOGG, _______, WAC_V, _______, _______, _______, _______, _______, _______, _______,
+        QK_BOOT, RGB_TOG, AU_TOGG, _______, WSC_V, _______, _______, _______, _______, _______, _______, _______,
         //+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
         _______, _______, _______, _______, _______, _______, _______, _______
         //+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
@@ -218,21 +218,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
         }
         break;
-    case WAC_V:
+    case WSC_V:
         if (record->event.pressed) {
-            send_string_with_delay(SS_LGUI(SS_LALT(SS_LCTL("v"))), 15);
+            send_string_with_delay(SS_LGUI(SS_LSFT(SS_LCTL("v"))), 40);
             return false;
         }
         break;
     case WSC_T:
         if (record->event.pressed) {
-            send_string_with_delay(SS_LGUI(SS_LSFT(SS_LCTL("t"))), 15);
+            send_string_with_delay(SS_LGUI(SS_LSFT(SS_LCTL("t"))), 40);
             return false;
         }
         break;
     case WSC_R:
         if (record->event.pressed) {
-            send_string_with_delay(SS_LGUI(SS_LSFT(SS_LCTL("r"))), 15);
+            send_string_with_delay(SS_LGUI(SS_LSFT(SS_LCTL("r"))), 40);
             return false;
         }
         break;
